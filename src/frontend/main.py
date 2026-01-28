@@ -5,6 +5,7 @@ import httpx
 
 #  Import FILES
 from components.navigation_rail import create_sidebar
+from pages.dashboard import create_dashboard_content
 from utilities.styles import UniversityTheme
 
 #
@@ -36,17 +37,7 @@ async def main(page: ft.Page) -> None:
 
     # 3. Main Content Area
     # We define this first so we can pass it to the sidebar
-    content_area = ft.Container(
-        expand=True,
-        padding=20,
-        bgcolor=ft.Colors.BLUE_ACCENT_700,  # Using the constant directly for visibility
-        content=ft.Column(
-            controls=[
-                ft.Text(value="Welcome to the Dashboard", theme_style=ft.TextThemeStyle.HEADLINE_MEDIUM),
-                ft.Text(value="Select an option from the navigation menu.", theme_style=ft.TextThemeStyle.BODY_LARGE),
-            ]
-        ),
-    )
+    content_area = create_dashboard_content()
 
     # 4. Create Sidebar (Navigation Rail)
     # We pass 'page' and 'content_area' so the sidebar knows what to update
